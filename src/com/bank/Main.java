@@ -48,7 +48,7 @@ public class Main {
             String input = "";
             int depositCount = 0, transferCount = 0, withdrawalCount = 0;
             do {
-                System.out.print("\n1. View account balance\n2. Make a deposit\n3. Make a transfer\n4. Make a Withdrawal\n5. Change Username \n6 Change Password: ");
+                System.out.print("\n1. View account balance\n2. Make a deposit\n3. Make a transfer\n4. Make a Withdrawal\n5. Change Username \n6. Change Password \n7. Log Out:");
                 entry = scan.next();
                 switch (entry)
                 {
@@ -107,6 +107,9 @@ public class Main {
                         System.out.print("Enter your new password: ");
                         String password = scan.next();
                         newUser.setPassword(password);
+                        break;
+                    case "7":
+                        System.out.print("Goodbye " + newUser.getName());
                         break;
                 }
                 System.out.print("Do you want to do another transaction y or n:");
