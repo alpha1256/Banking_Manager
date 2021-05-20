@@ -10,7 +10,7 @@ public class Main {
     {
 
         System.out.print("*******Welcome to bank management system*******\n");
-        System.out.print("Enter 1 or 2\n1. Add new user\n2. Sign in to your account: ");
+        System.out.print("Enter 1 or 2\n1. Add new user\n2. Sign in to your account\n3. Delete your account: ");
         Scanner scan = new Scanner(System.in);
         String entry = scan.next();
         if (entry.equals("1"))
@@ -42,13 +42,13 @@ public class Main {
                 }
                 if (!check)
                 {
-                    System.out.print("Invalid password or username");
+                    System.out.print("Invalid password or username\n");
                 }
             }while (!check);
             String input = "";
             int depositCount = 0, transferCount = 0, withdrawalCount = 0;
             do {
-                System.out.print("\n1. View account balance\n2. Make a deposit\n3. Make a transfer\n4. Make a Withdrawal\n5. Change Username \n6. Change Password\7. Transfer money to another account\n8. Log Out:");
+                System.out.print("\n1. View account balance\n2. Make a deposit\n3. Make a transfer\n4. Make a Withdrawal\n5. Change Username \n6. Change Password\7. Transfer money to another user\n8. Log Out:");
                 entry = scan.next();
                 switch (entry)
                 {
@@ -137,6 +137,37 @@ public class Main {
             }while (input.equals("y"));
 
         }
+        else if (entry.equals("3"))
+        {
+            user newUser = new user();
+            boolean check = false;
+            int counter = 0;
+            System.out.print("Note your accounts balances must be zero to delete");
+            do {
+                System.out.print("\nEnter your username: ");
+                String username = scan.next();
+                System.out.print("\nEnter your password: ");
+                String password = scan.next();
+                for (int i = 0; i < allUsers.size(); i++) {
+                    if (allUsers.get(i).checkUseAndPassword(username, password)) {
+                        newUser = allUsers.get(i);
+                        check = true;
+                        counter = i;
+                        break;
+                    }
+                }
+            }while(!check);
+            if (newUser.getSavings().getAmount() == 0 && newUser.getCheckings().getAmount() ==0)
+            {
+                System.out.println("Both your accounts balances are zero do you want to delete y or n");
+                String delete = scan.next();
+                if (delete.equals("y"))
+                {
+                    allUsers.remove(counter);
+                    System.out.print("Your account have been deleted");
+                }
+            }
+        }
 
     }
 
@@ -146,7 +177,7 @@ public class Main {
         do {
             driver();
             Scanner input = new Scanner(System.in);
-            System.out.print("\nDo you want to continue y or n");
+            System.out.print("\nDo you want to continue y or n: ");
             newTemp = input.next();
             if (newTemp.equals("n"))
             {
