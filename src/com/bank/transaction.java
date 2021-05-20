@@ -66,13 +66,13 @@ public class transaction {
         // If the account is their savings add the deposit to the account
         if(account.getName().equalsIgnoreCase("savings")) {
             account.setAmount(account.getAmount() + depositAmount) ;
-            System.out.println(user.getName() + " deposited " + depositAmount + " from their savings account");
+            System.out.println(user.getName() + " deposited " + depositAmount + " to their savings account");
             System.out.println("Their new balance is: " + account.getAmount());
         }
         // If the account is their checkings add the deposit to the account
         if(account.getName().equalsIgnoreCase("checkings")) {
             account.setAmount(account.getAmount() + depositAmount);
-            System.out.println(user.getName() + " deposited " + depositAmount + " from their checkings account");
+            System.out.println(user.getName() + " deposited " + depositAmount + " to their checkings account");
             System.out.println("Their new balance is: " + account.getAmount());
         }
     }
@@ -105,7 +105,6 @@ public class transaction {
             accountTo.setAmount(accountTo.getAmount() + transferAmount);
             System.out.println("You have successfully transferred $" + transferAmount + " from " + accountFrom.getName() + " to " + accountTo.getName());
             System.out.println("New " + accountFrom.getName() + " balance: " + accountFrom.getAmount());
-            System.out.println("New " + accountTo.getName() + " balance: " + accountTo.getAmount());
         }
     }
 
