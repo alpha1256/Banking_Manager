@@ -48,7 +48,7 @@ public class Main {
             String input = "";
             int depositCount = 0, transferCount = 0, withdrawalCount = 0;
             do {
-                System.out.print("\n1. View account balance\n2. Make a deposit\n3. Make a transfer\n4. Make a Withdrawal\n5. Change Username \n6. Change Password \n7. Log Out:");
+                System.out.print("\n1. View account balance\n2. Make a deposit\n3. Make a transfer\n4. Make a Withdrawal\n5. Change Username \n6. Change Password\7. Transfer money to another account\n8. Log Out:");
                 entry = scan.next();
                 switch (entry)
                 {
@@ -109,6 +109,24 @@ public class Main {
                         newUser.setPassword(password);
                         break;
                     case "7":
+                        System.out.print("Enter username of user you want to transfer money to: ");
+                        String newUsername = scan.next();
+                        user foundUser = new user();
+                        boolean findUser = false;
+                        for (int i=0; i < allUsers.size(); i++)
+                        {
+                            if (allUsers.get(i).getUserName().equals(newUsername))
+                            {
+                                foundUser = allUsers.get(i);
+                                findUser = true;
+                            }
+                        }
+                        if (findUser)
+                        {
+                            //TODO transfer money to another users checkings (use foundUser)
+                        }
+                        break;
+                    case "8":
                         System.out.print("Goodbye " + newUser.getName());
                         break;
                 }
