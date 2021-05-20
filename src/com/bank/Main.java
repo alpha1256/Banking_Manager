@@ -46,7 +46,7 @@ public class Main {
                 }
             }while (!check);
             String input = "";
-            int depositCount = 0, transferCount = 0, withdrawalCount = 0;
+            int depositCount = 0, transferCount = 0, withdrawalCount = 0, userTransferCount = 0;
             do {
                 System.out.print("\n1. View account balance\n2. Make a deposit\n3. Make a transfer\n4. Make a Withdrawal\n5. Change Username \n6. Change Password\7. Transfer money to another user\n8. Log Out:");
                 entry = scan.next();
@@ -123,7 +123,42 @@ public class Main {
                         }
                         if (findUser)
                         {
-                            //TODO transfer money to another users checkings (use foundUser)
+                            System.out.println("\nWhich account would you like to transfer money from?\n1. Checkings\n2. Savings");
+                            int a = scan.nextInt();
+                            System.out.println("\nWhich account would you like to transfer the money to?\n1. User's checkings\n2. User's savings");
+                            int u = scan.nextInt();
+                            System.out.println("Enter the amount of money you would like to transfer to this user: ");
+                            double transferAmount = scan.nextDouble();
+                            // If transferring from checkings
+                            if(a == 1) {
+                                //If transferring to checkings
+                                if(u == 1) {
+                                    transaction.transferToUser(newUser.getCheckings(), foundUser.getCheckings(), transferAmount);
+                                    transaction newUserTransfer = new transaction(("Transaction" + String.valueOf(userTransferCount)+1), "UserTransfer");
+                                    userTransferCount++;
+                                }
+                                //If transferring to savings
+                                if(u == 2) {
+                                    transaction.transferToUser(newUser.getCheckings(), foundUser.getSavings(), transferAmount);
+                                    transaction newUserTransfer = new transaction(("Transaction" + String.valueOf(userTransferCount)+1), "UserTransfer");
+                                    userTransferCount++;
+                                }
+                            }
+                            // If transferring from savings
+                            if(a == 2) {
+                                //If transferring to checkings
+                                if(u == 1) {
+                                    transaction.transferToUser(newUser.getSavings(), foundUser.getCheckings(), transferAmount);
+                                    transaction newUserTransfer = new transaction(("Transaction" + String.valueOf(userTransferCount)+1), "UserTransfer");
+                                    userTransferCount++;
+                                }
+                                //If transferring to savings
+                                if(u == 2) {
+                                    transaction.transferToUser(newUser.getSavings(), foundUser.getSavings(), transferAmount);
+                                    transaction newUserTransfer = new transaction(("Transaction" + String.valueOf(userTransferCount)+1), "UserTransfer");
+                                    userTransferCount++;
+                                }
+                            }
                         }
                         break;
                     case "8":
