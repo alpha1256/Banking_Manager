@@ -30,7 +30,7 @@ public class account {
     public void viewAllTransactions() {
         for (int i =0; i < transactions.size(); i++)
         {
-            System.out.print(transactions.get(i).toString());
+            System.out.print(transactions.get(i).toString()+"\n");
         }
     }
 

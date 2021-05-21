@@ -48,7 +48,7 @@ public class Main {
             String input = "";
             int depositCount = 0, transferCount = 0, withdrawalCount = 0, userTransferCount = 0;
             do {
-                System.out.print("\n1. View account balance\n2. Make a deposit\n3. Make a transfer\n4. Make a Withdrawal\n5. Change Username \n6. Change Password\n7. Transfer money to another user\n8. Log Out:");
+                System.out.print("\n1. View account balance\n2. Make a deposit\n3. Make a transfer\n4. Make a Withdrawal\n5. Change Username \n6. Change Password\n7. Transfer money to another user\n8. View all transactions\n9. Log Out:");
                 entry = scan.next();
                 switch (entry)
                 {
@@ -162,6 +162,12 @@ public class Main {
                         }
                         break;
                     case "8":
+                        System.out.print("All transactions for checkings account");
+                        newUser.getCheckings().viewAllTransactions();
+                        System.out.print("\nAll transactions for savings account");
+                        newUser.getSavings().viewAllTransactions();
+                        break;
+                    case "9":
                         System.out.print("Goodbye " + newUser.getName());
                         break;
                 }
