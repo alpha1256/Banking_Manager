@@ -6,6 +6,7 @@ public class transaction {
 
     private String transactionName;
     private String transactionType;
+    private double transactionAmount;
 
     // Setters
     public void setTransactionName(String transactionName){
@@ -25,9 +26,10 @@ public class transaction {
         return transactionType;
     }
 
-    public transaction(String transactionName, String transactionType) {
+    public transaction(String transactionName, String transactionType, double transactionAmount) {
         this.transactionName = transactionName;
         this.transactionType = transactionType;
+        this.transactionAmount = transactionAmount;
     }
 
     public transaction()
@@ -110,7 +112,7 @@ public class transaction {
 
     @Override
     public String toString() {
-        return "Transaction: " + transactionType + " " + transactionName;
+        return transactionType + " " + transactionName + " Amount: $" + transactionAmount;
     }
 
 }
