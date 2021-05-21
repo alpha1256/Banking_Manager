@@ -183,9 +183,9 @@ public class Main {
                         }
                         break;
                     case "8":
-                        System.out.print("All transactions for checkings account");
+                        System.out.print("All transactions for checkings account:\n");
                         newUser.getCheckings().viewAllTransactions();
-                        System.out.print("\nAll transactions for savings account");
+                        System.out.print("\nAll transactions for savings account:\n");
                         newUser.getSavings().viewAllTransactions();
                         break;
                     case "9":
