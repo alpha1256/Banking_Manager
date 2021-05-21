@@ -46,5 +46,6 @@ public class account {
     {
         amount =0;
         this.name = name;
+        transactions = new ArrayList<>();
     }
 }
