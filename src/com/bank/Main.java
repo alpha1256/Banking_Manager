@@ -63,12 +63,15 @@ public class Main {
                         double deposit = scan.nextDouble();
                         if(acc == 1) {
                             transaction.deposit(newUser, newUser.getCheckings(), deposit);
+                            transaction newDeposit = new transaction(("Transaction" + String.valueOf(depositCount)+1), "Deposit");
+                            newUser.getCheckings().transactions.add(newDeposit);
+                            depositCount++;
                         }
                         if(acc == 2) {
-                            transaction.deposit(newUser, newUser.getSavings(), deposit);
+                            transaction newDeposit = new transaction(("Transaction" + String.valueOf(depositCount)+1), "Deposit");
+                            newUser.getSavings().transactions.add(newDeposit);
+                            depositCount++;
                         }
-                        transaction newDeposit = new transaction(("Transaction" + String.valueOf(depositCount)+1), "Deposit");
-                        depositCount++;
                         break;
                     case "3":
                         System.out.println("\nHow would you like to complete this transfer: \n1. Transfer from checkings to savings\n2. Transfer from savings to checkings");
@@ -77,12 +80,18 @@ public class Main {
                         double transfer = scan.nextDouble();
                         if(t == 1) {
                             transaction.transfer(newUser, newUser.getCheckings(), newUser.getSavings(), transfer);
+                            transaction newTransfer = new transaction(("Transaction" + String.valueOf(transferCount)+1), "Transfer");
+                            newUser.getCheckings().transactions.add(newTransfer);
+                            newUser.getSavings().transactions.add(newTransfer);
+                            transferCount++;
                         }
                         if(t == 2) {
                             transaction.transfer(newUser, newUser.getSavings(), newUser.getCheckings(), transfer);
+                            transaction newTransfer = new transaction(("Transaction" + String.valueOf(transferCount)+1), "Transfer");
+                            newUser.getSavings().transactions.add(newTransfer);
+                            newUser.getCheckings().transactions.add(newTransfer);
+                            transferCount++;
                         }
-                        transaction newTransfer = new transaction(("Transaction" + String.valueOf(transferCount)+1), "Transfer");
-                        transferCount++;
                         break;
                     case "4":
                         System.out.println("\nWhich account would you like to make a withdrawal from:\n1. Checkings\n2. Savings");
@@ -91,12 +100,16 @@ public class Main {
                         double withdrawal = scan.nextDouble();
                         if(acc == 1) {
                             transaction.withdrawal(newUser, newUser.getCheckings(), withdrawal);
+                            transaction newWithdrawal = new transaction(("Transaction" + String.valueOf(withdrawalCount)+1), "Withdrawal");
+                            newUser.getCheckings().transactions.add(newWithdrawal);
+                            withdrawalCount++;
                         }
                         if(acc == 2) {
                             transaction.withdrawal(newUser, newUser.getSavings(), withdrawal);
+                            transaction newWithdrawal = new transaction(("Transaction" + String.valueOf(withdrawalCount)+1), "Withdrawal");
+                            newUser.getSavings().transactions.add(newWithdrawal);
+                            withdrawalCount++;
                         }
-                        transaction newWithdrawal = new transaction(("Transaction" + String.valueOf(withdrawalCount)+1), "Withdrawal");
-                        withdrawalCount++;
                         break;
                     case "5":
                         System.out.print("Enter your new username: ");
@@ -135,12 +148,16 @@ public class Main {
                                 if(u == 1) {
                                     transaction.transferToUser(newUser.getCheckings(), foundUser.getCheckings(), transferAmount);
                                     transaction newUserTransfer = new transaction(("Transaction" + String.valueOf(userTransferCount)+1), "UserTransfer");
+                                    newUser.getCheckings().transactions.add(newUserTransfer);
+                                    foundUser.getCheckings().transactions.add(newUserTransfer);
                                     userTransferCount++;
                                 }
                                 //If transferring to savings
                                 if(u == 2) {
                                     transaction.transferToUser(newUser.getCheckings(), foundUser.getSavings(), transferAmount);
                                     transaction newUserTransfer = new transaction(("Transaction" + String.valueOf(userTransferCount)+1), "UserTransfer");
+                                    newUser.getCheckings().transactions.add(newUserTransfer);
+                                    foundUser.getSavings().transactions.add(newUserTransfer);
                                     userTransferCount++;
                                 }
                             }
@@ -150,12 +167,16 @@ public class Main {
                                 if(u == 1) {
                                     transaction.transferToUser(newUser.getSavings(), foundUser.getCheckings(), transferAmount);
                                     transaction newUserTransfer = new transaction(("Transaction" + String.valueOf(userTransferCount)+1), "UserTransfer");
+                                    newUser.getSavings().transactions.add(newUserTransfer);
+                                    foundUser.getCheckings().transactions.add(newUserTransfer);
                                     userTransferCount++;
                                 }
                                 //If transferring to savings
                                 if(u == 2) {
                                     transaction.transferToUser(newUser.getSavings(), foundUser.getSavings(), transferAmount);
                                     transaction newUserTransfer = new transaction(("Transaction" + String.valueOf(userTransferCount)+1), "UserTransfer");
+                                    newUser.getSavings().transactions.add(newUserTransfer);
+                                    foundUser.getSavings().transactions.add(newUserTransfer);
                                     userTransferCount++;
                                 }
                             }
