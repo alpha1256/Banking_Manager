@@ -68,6 +68,7 @@ public class Main {
                             depositCount++;
                         }
                         if(acc == 2) {
+                            transaction.deposit(newUser, newUser.getSavings(), deposit);
                             transaction newDeposit = new transaction(("Transaction" + String.valueOf(depositCount)+1), "Deposit", deposit);
                             newUser.getSavings().transactions.add(newDeposit);
                             depositCount++;
