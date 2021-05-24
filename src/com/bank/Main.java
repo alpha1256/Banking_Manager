@@ -9,7 +9,7 @@ public class Main {
     public static void driver()
     {
 
-        System.out.print("*******Welcome to bank management system*******\n");
+        System.out.print("\n*******Welcome to bank management system*******\n");
         System.out.print("Enter 1 or 2\n1. Add new user\n2. Sign in to your account\n3. Delete your account: ");
         Scanner scan = new Scanner(System.in);
         String entry = scan.next();

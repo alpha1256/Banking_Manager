@@ -59,11 +59,7 @@ public class user {
         System.out.print("Welcome " + this.name + " your username: " + this.userName);
     }
 
-    public user ()
-    {
-
-    }
-
+    public user () {}
 
     public boolean checkUseAndPassword(String userName, String password)
     {
